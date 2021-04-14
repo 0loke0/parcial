@@ -21,12 +21,7 @@ public class Medico implements Serializable {
     Empleado empleado = new Empleado();
     Scanner sc = new Scanner(System.in);
 
-    public Medico(String ingreso, String especialidad, String universidad, String jornada) {
-        this.ingreso = ingreso;
-        this.especialidad = especialidad;
-        this.universidad = universidad;
-        this.jornada = jornada;
-    }
+
 
     public void creadorMedico() {
         sc.nextLine();
