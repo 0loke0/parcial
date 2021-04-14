@@ -153,14 +153,14 @@ public class Menu {
         if (contadorPac < 10) {
             Paciente pac = new Paciente("", "", "", 0);
             pac.creadorPaciente();
-            for (int i = 0; i < listaPac.length; i++) {// verifica si esta duplicado el documento
-                if (listaPac[i].getDocumento() == pac.getDocumento()) {
+            for (int i = 0; i < listaPac.size(); i++) {// verifica si esta duplicado el documento
+                if (listaPac.get(i).getDocumento() == pac.getDocumento()) {
                     verificador = 1;
                 }
             }
 
             if (verificador == 0) {
-                listaPac[contadorPac] = pac;
+                listaPac.add(pac);
                 contadorPac++;
             } else {
                 System.out.println("el Documento ya pertenece a otro usuario");
@@ -176,21 +176,21 @@ public class Menu {
         System.out.println("introduca el numero de cedula del empleado");
         med.getEmpleado().getPersona().setDocumento(sc.nextInt());
         if (contadorPac < 10) {
-            for (int i = 0; i < listaEmp.length; i++) {// verifica si esta duplicado el documento
-                if (listaEmp[i].getPersona().getDocumento() == med.getEmpleado().getPersona().getDocumento()) {
+            for (int i = 0; i < listaEmp.size(); i++) {// verifica si esta duplicado el documento
+                if (listaEmp.get(i).getPersona().getDocumento() == med.getEmpleado().getPersona().getDocumento()) {
                     verificador = 1;
-                    med.getEmpleado().getPersona().setNombre(listaEmp[i].getPersona().getNombre());
-                    med.getEmpleado().getPersona().setApellidos(listaEmp[i].getPersona().getApellidos());
-                    med.getEmpleado().getPersona().setEdad(listaEmp[i].getPersona().getEdad());
-                    med.getEmpleado().getPersona().setGenero(listaEmp[i].getPersona().getGenero());
-                    med.getEmpleado().getPersona().setDocumento(listaEmp[i].getPersona().getDocumento());
+                    med.getEmpleado().getPersona().setNombre(listaEmp.get(i).getPersona().getNombre());
+                    med.getEmpleado().getPersona().setApellidos(listaEmp.get(i).getPersona().getApellidos());
+                    med.getEmpleado().getPersona().setEdad(listaEmp.get(i).getPersona().getEdad());
+                    med.getEmpleado().getPersona().setGenero(listaEmp.get(i).getPersona().getGenero());
+                    med.getEmpleado().getPersona().setDocumento(listaEmp.get(i).getPersona().getDocumento());
 
                 }
             }
 
             if (verificador == 1) {
                 med.creadorMedico();
-                listaMed[contadorMed] = med;
+                listaMed.add(med) ;
                 contadorMed++;
             } else {
                 System.out.println("**********************************");
