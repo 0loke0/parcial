@@ -23,42 +23,40 @@ import java.util.Scanner;
  */
 public class Menu {
     //array personal inventario citas\
-    
+
     Scanner sn = new Scanner(System.in);
     Scanner sc = new Scanner(System.in);
     ArrayList<Personas> arrayPersonas = new ArrayList();
-    ArrayList<Inventario> arrayInventario = new ArrayList(); 
-    ArrayList<Habitaciones> arrayHabitaciones = new ArrayList(); 
-    ArrayList<Citas> arrayCitas = new ArrayList(); 
-    Empleado[] listaEmp = new Empleado[10];
-    Paciente[] listaPac = new Paciente[10];
-    Medico[] listaMed = new Medico[10];
-    Habitaciones[] listaHab= new Habitaciones[10];
-   
-    
-    
-    public void crearPersonas() throws IOException{
-    System.out.println("Creador de persomas ");
-    System.out.println(" ");
-    System.out.println("introdusca el tipo de persona a crear ");
-     
-       boolean salir = false;
-       int opcion; //Guardaremos la opcion del usuario
-       this.generico();
-       
-            while (!salir) {
- 
+    ArrayList<Inventario> arrayInventario = new ArrayList();
+    ArrayList<Habitaciones> arrayHabitaciones = new ArrayList();
+    ArrayList<Citas> arrayCitas = new ArrayList();
+    ArrayList<Empleado> listaEmp = new ArrayList();
+    ArrayList<Paciente> listaPac = new ArrayList();
+    ArrayList<Medico> listaMed = new ArrayList();
+    Habitaciones[] listaHab = new Habitaciones[10];
+
+    public void crearPersonas() throws IOException {
+        System.out.println("Creador de persomas ");
+        System.out.println(" ");
+        System.out.println("introdusca el tipo de persona a crear ");
+
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+        this.generico();
+
+        while (!salir) {
+
             System.out.println("Empleado. Opcion 1");
             System.out.println("Paciente. Opcion 2");
             System.out.println("Medico. Opcion 3");
             System.out.println("mostrar Todo. Opcion 4");
             System.out.println("5. Salir");
-  
+
             try {
- 
+
                 System.out.println("Escribe una de las opciones");
                 opcion = sn.nextInt();
-              
+
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
@@ -71,14 +69,14 @@ public class Menu {
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
                         this.agregarMedico();
-                    break; 
+                        break;
                     case 4:
                         System.out.println("Has seleccionado la opcion 3");
-                        
+
                         this.mostrar();
-                        
-                        break;   
-                        
+
+                        break;
+
                     case 5:
                         salir = true;
                         break;
@@ -90,190 +88,168 @@ public class Menu {
                 sn.next();
             }
         }
-      
+
     }
-    
-         
-    
-    
-    public void generico(){
-             
-          for(int i=0;i<listaEmp.length;i++){
-          Empleado emp = new Empleado(); 
-          
-        /*  emp.Personas();
+
+    public void generico() {
+
+        for (int i = 0; i < listaEmp.length; i++) {
+            Empleado emp = new Empleado();
+
+            /*  emp.Personas();
           emp.sEmpleado();*/
-          listaEmp[i]=emp;
-      }
-          for(int i=0;i<listaPac.length;i++){
-          Paciente per = new Paciente("","","",0); 
-          /*per.Personas();
-          per.Paciente();*/
-          listaPac[i]=per;
-      }
-          for(int i=0;i<listaMed.length;i++){
-          Medico med = new Medico("","","",""); 
-          /*per.Personas();
-          per.Paciente();*/
-          listaMed[i]=med;
-      }
-    
-    }
-    
-    
-    
-    int contadorEmp=0;
-    int verificador =0;// verifica si el documento esta repetido
-    public void agregarEmpleado() throws IOException{
-    
-    
-    
-    if (contadorEmp<10){
-      Empleado emp = new Empleado();      
-      int a=emp.getPersona().getDocumento();
-      
-        for(int i=0;i<listaEmp.length;i++){// verifica si esta duplicado el documento
-            if(listaEmp[i].getPersona().getDocumento()==emp.getPersona().getDocumento()){
-               
-                 verificador=1;
-              
-                
-            }
+            listaEmp[i] = emp;
         }
-      
-            if(verificador==0){// si no encuntre documento dupliado lo crea
-                listaEmp[contadorEmp]=emp;   
-                emp.creadorEmpleado(contadorEmp); //crea los documentos 
-                contadorEmp++;
+        for (int i = 0; i < listaPac.length; i++) {
+            Paciente per = new Paciente("", "", "", 0);
+            /*per.Personas();
+          per.Paciente();*/
+            listaPac[i] = per;
+        }
+        for (int i = 0; i < listaMed.length; i++) {
+            Medico med = new Medico("", "", "", "");
+            /*per.Personas();
+          per.Paciente();*/
+            listaMed[i] = med;
+        }
+
+    }
+
+    int contadorEmp = 0;
+    int verificador = 0;// verifica si el documento esta repetido
+
+    public void agregarEmpleado() throws IOException {
+
+        if (contadorEmp < 10) {
+            Empleado emp = new Empleado();
+
+            for (int i = 0; i < listaEmp.size(); i++) {// verifica si esta duplicado el documento
+                if (listaEmp.get(i).getPersona().getDocumento() == emp.getPersona().getDocumento()) {
+
+                    verificador = 1;
+
+                }
             }
-            else{
+
+            if (verificador == 0) {// si no encuntre documento dupliado lo crea
+
+                emp.creadorEmpleado(contadorEmp); //crea los documentos 
+                listaEmp.add() = emp;
+
+                contadorEmp++;
+            } else {
                 System.out.println("el Documento ya pertenece a otro usuario");
             }
 
-                verificador=0;//restablece el verificador
-      
+            verificador = 0;//restablece el verificador
+
+        }
     }
- }
-    
-    int contadorPac=0;
-    public void agregarPaciente(){
-        
-    
-    
-    if (contadorPac<10){
-        Paciente pac = new Paciente("","","",0);     
-        pac.creadorPaciente();
-        for(int i=0;i<listaPac.length;i++){// verifica si esta duplicado el documento
-            if(listaPac[i].getDocumento()==pac.getDocumento()){
-            verificador=1;
+
+    int contadorPac = 0;
+
+    public void agregarPaciente() {
+
+        if (contadorPac < 10) {
+            Paciente pac = new Paciente("", "", "", 0);
+            pac.creadorPaciente();
+            for (int i = 0; i < listaPac.length; i++) {// verifica si esta duplicado el documento
+                if (listaPac[i].getDocumento() == pac.getDocumento()) {
+                    verificador = 1;
+                }
+            }
+
+            if (verificador == 0) {
+                listaPac[contadorPac] = pac;
+                contadorPac++;
+            } else {
+                System.out.println("el Documento ya pertenece a otro usuario");
             }
         }
-        
-            if (verificador==0){
-            listaPac[contadorPac]=pac;        
-            contadorPac++;
-            }
-            else
-            {
-            System.out.println("el Documento ya pertenece a otro usuario");
-            }    
     }
- }
-    
-    
-    int contadorMed=0;
-    public void agregarMedico(){
-        
-        Medico med = new Medico("","","","");
+
+    int contadorMed = 0;
+
+    public void agregarMedico() {
+
+        Medico med = new Medico();
         System.out.println("introduca el numero de cedula del empleado");
         med.getEmpleado().getPersona().setDocumento(sc.nextInt());
-    if (contadorPac<10){
-        for(int i=0;i<listaEmp.length;i++){// verifica si esta duplicado el documento
-            if(listaEmp[i].getPersona().getDocumento()==med.getEmpleado().getPersona().getDocumento()){
-            verificador=1;
-            med.getEmpleado().getPersona().setNombre(listaEmp[i].getPersona().getNombre());            
-            med.getEmpleado().getPersona().setApellidos(listaEmp[i].getPersona().getApellidos());
-            med.getEmpleado().getPersona().setEdad(listaEmp[i].getPersona().getEdad());
-            med.getEmpleado().getPersona().setGenero(listaEmp[i].getPersona().getGenero());
-            med.getEmpleado().getPersona().setDocumento(listaEmp[i].getPersona().getDocumento());
+        if (contadorPac < 10) {
+            for (int i = 0; i < listaEmp.length; i++) {// verifica si esta duplicado el documento
+                if (listaEmp[i].getPersona().getDocumento() == med.getEmpleado().getPersona().getDocumento()) {
+                    verificador = 1;
+                    med.getEmpleado().getPersona().setNombre(listaEmp[i].getPersona().getNombre());
+                    med.getEmpleado().getPersona().setApellidos(listaEmp[i].getPersona().getApellidos());
+                    med.getEmpleado().getPersona().setEdad(listaEmp[i].getPersona().getEdad());
+                    med.getEmpleado().getPersona().setGenero(listaEmp[i].getPersona().getGenero());
+                    med.getEmpleado().getPersona().setDocumento(listaEmp[i].getPersona().getDocumento());
 
-            
+                }
             }
-            }
-        
-       if (verificador==1){
-           med.creadorMedico();
-            listaMed[contadorMed]=med;        
-            contadorMed++;
-            }
-            else
-            {
+
+            if (verificador == 1) {
+                med.creadorMedico();
+                listaMed[contadorMed] = med;
+                contadorMed++;
+            } else {
                 System.out.println("**********************************");
-            System.out.println("No se encontro usuario con esa Documento en Empleado");
-            System.out.println("**********************************");
-            }   
-        
-        
-    
-    }
-    
-    }
-    
-    
+                System.out.println("No se encontro usuario con esa Documento en Empleado");
+                System.out.println("**********************************");
+            }
 
+        }
+
+    }
 
     public void mostrar() throws IOException {
-        
-        System.out.println("**********EMPLEADOS*************");
-        for(int i=0;i<listaEmp.length;i++){
-           listaEmp[i].mostrar();  
-           System.out.println("***********************************");
-           
-       } 
-       System.out.println("--------PACIENTES----------");
-       for(int i=0;i<listaPac.length;i++){
-           listaPac[i].mostrar();    
-           System.out.println("----------------------------------");
-       }
-        System.out.println("--------MEDICOS----------");
-       for(int i=0;i<listaMed.length;i++){
-           listaMed[i].mostrar();    
-           System.out.println("----------------------------------");
-       }
-       
 
-           //Empleados     
-       
+        System.out.println("**********EMPLEADOS*************");
+        for (int i = 0; i < listaEmp.length; i++) {
+            listaEmp[i].mostrar();
+            System.out.println("***********************************");
+
+        }
+        System.out.println("--------PACIENTES----------");
+        for (int i = 0; i < listaPac.length; i++) {
+            listaPac[i].mostrar();
+            System.out.println("----------------------------------");
+        }
+        System.out.println("--------MEDICOS----------");
+        for (int i = 0; i < listaMed.length; i++) {
+            listaMed[i].mostrar();
+            System.out.println("----------------------------------");
+        }
+
+        //Empleados     
         File carpeta = new File("C:/Users/loke/Desktop/Nueva/");
         File[] listado = carpeta.listFiles();
-       for(int i=0;i<listado.length;i++){
-            listaEmp[0].muestraContenido(i);    
-           System.out.println("----------------------------------");
-       }
-      
-       
-       }
+        for (int i = 0; i < listado.length; i++) {
+            listaEmp[0].muestraContenido(i);
+            System.out.println("----------------------------------");
+        }
 
-    
-    public void crearInventario(){
-    System.out.println("Creador de Inventario ");
+    }
+
+    public void crearInventario() {
+        System.out.println("Creador de Inventario ");
         System.out.println(" ");
-    System.out.println("introdusca el tipo de Inventario a crear ");
-     
-       boolean salir = false;
-       int opcion; //Guardaremos la opcion del usuario
-    
-            while (!salir) {
- 
+        System.out.println("introdusca el tipo de Inventario a crear ");
+
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+
+        while (!salir) {
+
             System.out.println("Empleado. Opcion 1");
             System.out.println("Paciente. Opcion 2");
-                        System.out.println("3. Salir");
- 
+            System.out.println("3. Salir");
+
             try {
- 
+
                 System.out.println("Escribe una de las opciones");
                 opcion = sn.nextInt();
- 
+
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
@@ -292,38 +268,39 @@ public class Menu {
                 sn.next();
             }
         }
-    
+
     }
-    
-    int contadorHab=0;
-    public void AgregarHabitacion(){
-        if (contadorEmp<10){
-            Habitaciones hab = new Habitaciones();      
-                
+
+    int contadorHab = 0;
+
+    public void AgregarHabitacion() {
+        if (contadorEmp < 10) {
+            Habitaciones hab = new Habitaciones();
+
             contadorEmp++;
+        }
+
     }
-        
-    }
-    
-    public void crearHabitaciones(){
-    System.out.println("Creador de Habitaciones ");
-    System.out.println(" ");
-    System.out.println("introdusca el tipo de habitacion a crear ");
-     
-       boolean salir = false;
-       int opcion; //Guardaremos la opcion del usuario
-    
-            while (!salir) {
- 
+
+    public void crearHabitaciones() {
+        System.out.println("Creador de Habitaciones ");
+        System.out.println(" ");
+        System.out.println("introdusca el tipo de habitacion a crear ");
+
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+
+        while (!salir) {
+
             System.out.println("Empleado. Opcion 1");
             System.out.println("Paciente. Opcion 2");
-                        System.out.println("3. Salir");
- 
+            System.out.println("3. Salir");
+
             try {
- 
+
                 System.out.println("Escribe una de las opciones");
                 opcion = sn.nextInt();
- 
+
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
@@ -342,29 +319,29 @@ public class Menu {
                 sn.next();
             }
         }
-    
+
     }
 
-    public void crearCitas(){
-    System.out.println("Creador de Citas ");
-    System.out.println("Creador de persomas ");
-    System.out.println(" ");
-    System.out.println("introdusca el tipo de persona a crear ");
-     
-       boolean salir = false;
-       int opcion; //Guardaremos la opcion del usuario
-    
-            while (!salir) {
- 
+    public void crearCitas() {
+        System.out.println("Creador de Citas ");
+        System.out.println("Creador de persomas ");
+        System.out.println(" ");
+        System.out.println("introdusca el tipo de persona a crear ");
+
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+
+        while (!salir) {
+
             System.out.println("Empleado. Opcion 1");
             System.out.println("Paciente. Opcion 2");
-                        System.out.println("3. Salir");
- 
+            System.out.println("3. Salir");
+
             try {
- 
+
                 System.out.println("Escribe una de las opciones");
                 opcion = sn.nextInt();
- 
+
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
@@ -383,8 +360,7 @@ public class Menu {
                 sn.next();
             }
         }
-    
-    }
 
+    }
 
 }
