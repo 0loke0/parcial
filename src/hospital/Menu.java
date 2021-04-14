@@ -134,7 +134,7 @@ public class Menu {
             if (verificador == 0) {// si no encuntre documento dupliado lo crea
 
                 emp.creadorEmpleado(contadorEmp); //crea los documentos 
-                listaEmp.add() = emp;
+                listaEmp.add(emp);
 
                 contadorEmp++;
             } else {
@@ -205,19 +205,19 @@ public class Menu {
     public void mostrar() throws IOException {
 
         System.out.println("**********EMPLEADOS*************");
-        for (int i = 0; i < listaEmp.length; i++) {
-            listaEmp[i].mostrar();
+        for (int i = 0; i < listaEmp.size(); i++) {
+            listaEmp.get(i).mostrar();
             System.out.println("***********************************");
 
         }
         System.out.println("--------PACIENTES----------");
-        for (int i = 0; i < listaPac.length; i++) {
-            listaPac[i].mostrar();
+        for (int i = 0; i < listaPac.size(); i++) {
+            listaPac.get(i).mostrar();
             System.out.println("----------------------------------");
         }
         System.out.println("--------MEDICOS----------");
-        for (int i = 0; i < listaMed.length; i++) {
-            listaMed[i].mostrar();
+        for (int i = 0; i < listaMed.size(); i++) {
+            listaMed.get(i).mostrar();
             System.out.println("----------------------------------");
         }
 
@@ -225,7 +225,7 @@ public class Menu {
         File carpeta = new File("C:/Users/loke/Desktop/Nueva/");
         File[] listado = carpeta.listFiles();
         for (int i = 0; i < listado.length; i++) {
-            listaEmp[0].muestraContenido(i);
+            listaEmp.get(i).muestraContenido(i);
             System.out.println("----------------------------------");
         }
 
