@@ -42,11 +42,11 @@ public class Medico implements Serializable {
     }
 
     public void mostrar() {
-        System.out.println(empleado.getNombre());
-        System.out.println(empleado.getApellidos());
-        System.out.println(empleado.getEdad());
-        System.out.println(empleado.getGenero());
-        System.out.println(empleado.getDocumento());
+        System.out.println(empleado.persona.getNombre());
+        System.out.println(empleado.persona.getApellidos());
+        System.out.println(empleado.persona.getEdad());
+        System.out.println(empleado.persona.getGenero());
+        System.out.println(empleado.persona.getDocumento());
         System.out.println(this.getIngreso());
         System.out.println(this.getEspecialidad());
         System.out.println(this.getUniversidad());
@@ -95,5 +95,7 @@ public class Medico implements Serializable {
     public void setJornada(String jornada) {
         this.jornada = jornada;
     }
+   
+   
 
 }

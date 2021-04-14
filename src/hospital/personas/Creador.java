@@ -51,7 +51,7 @@ System.out.println(e.getMessage());
             objetoEntrada.close();
             System.out.println("DNI\t Nombre");
             System.out.println(p1.persona.getNombre());
-            System.out.println(p2.getAtributos());
+            System.out.println(p2.persona.getNombre());
         } catch (FileNotFoundException e) {
             System.out.println("¡El fichero no existe!");
         } catch (IOException e) {

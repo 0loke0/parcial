@@ -99,7 +99,7 @@ public class Menu {
     public void generico(){
              
           for(int i=0;i<listaEmp.length;i++){
-          Empleado emp = new Empleado("",0,0,0,0,0,""); 
+          Empleado emp = new Empleado(); 
           
         /*  emp.Personas();
           emp.sEmpleado();*/
@@ -129,12 +129,15 @@ public class Menu {
     
     
     if (contadorEmp<10){
-      Empleado emp = new Empleado("",0,0,0,0,0,"");      
-      
+      Empleado emp = new Empleado();      
+      int a=emp.getPersona().getDocumento();
       
         for(int i=0;i<listaEmp.length;i++){// verifica si esta duplicado el documento
-            if(listaEmp[i].getDocumento()==emp.getDocumento()&&listaEmp[i].getDocumento()!=0){
-                verificador=1;
+            if(listaEmp[i].getPersona().getDocumento()==emp.getPersona().getDocumento()){
+               
+                 verificador=1;
+              
+                
             }
         }
       
@@ -183,16 +186,16 @@ public class Menu {
         
         Medico med = new Medico("","","","");
         System.out.println("introduca el numero de cedula del empleado");
-        med.setDocumento(sc.nextInt());
+        med.getEmpleado().getPersona().setDocumento(sc.nextInt());
     if (contadorPac<10){
         for(int i=0;i<listaEmp.length;i++){// verifica si esta duplicado el documento
-            if(listaEmp[i].getDocumento()==med.getDocumento()){
+            if(listaEmp[i].getPersona().getDocumento()==med.getEmpleado().getPersona().getDocumento()){
             verificador=1;
-            med.setNombre(listaEmp[i].getNombre());            
-            med.setApellidos(listaEmp[i].getApellidos());
-            med.setEdad(listaEmp[i].getEdad());
-            med.setGenero(listaEmp[i].getGenero());
-            med.setDocumento(listaEmp[i].getDocumento());
+            med.getEmpleado().getPersona().setNombre(listaEmp[i].getPersona().getNombre());            
+            med.getEmpleado().getPersona().setApellidos(listaEmp[i].getPersona().getApellidos());
+            med.getEmpleado().getPersona().setEdad(listaEmp[i].getPersona().getEdad());
+            med.getEmpleado().getPersona().setGenero(listaEmp[i].getPersona().getGenero());
+            med.getEmpleado().getPersona().setDocumento(listaEmp[i].getPersona().getDocumento());
 
             
             }
