@@ -92,25 +92,25 @@ public class Menu {
     }
 
     public void generico() {
-
-        for (int i = 0; i < listaEmp.length; i++) {
+        int total = 10;
+        for (int i = 0; i < total; i++) {
             Empleado emp = new Empleado();
 
             /*  emp.Personas();
           emp.sEmpleado();*/
-            listaEmp[i] = emp;
+            listaEmp.add(emp);
         }
-        for (int i = 0; i < listaPac.length; i++) {
+        for (int i = 0; i < total; i++) {
             Paciente per = new Paciente("", "", "", 0);
             /*per.Personas();
           per.Paciente();*/
-            listaPac[i] = per;
+            listaPac.add(per);
         }
-        for (int i = 0; i < listaMed.length; i++) {
-            Medico med = new Medico("", "", "", "");
+        for (int i = 0; i < total; i++) {
+            Medico med = new Medico();
             /*per.Personas();
           per.Paciente();*/
-            listaMed[i] = med;
+            listaMed.add(med);
         }
 
     }
@@ -122,18 +122,18 @@ public class Menu {
 
         if (contadorEmp < 10) {
             Empleado emp = new Empleado();
-
+            emp.creadorEmpleado(contadorEmp);
             for (int i = 0; i < listaEmp.size(); i++) {// verifica si esta duplicado el documento
                 if (listaEmp.get(i).getPersona().getDocumento() == emp.getPersona().getDocumento()) {
-
-                    verificador = 1;
-
+                    if (emp.getPersona().getDocumento()!=0) {
+                        verificador = 1;
+                    }
                 }
             }
 
             if (verificador == 0) {// si no encuntre documento dupliado lo crea
 
-                emp.creadorEmpleado(contadorEmp); //crea los documentos 
+                //crea los documentos 
                 listaEmp.add(emp);
 
                 contadorEmp++;
@@ -190,7 +190,7 @@ public class Menu {
 
             if (verificador == 1) {
                 med.creadorMedico();
-                listaMed.add(med) ;
+                listaMed.add(med);
                 contadorMed++;
             } else {
                 System.out.println("**********************************");
