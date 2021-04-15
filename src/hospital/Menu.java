@@ -34,6 +34,7 @@ public class Menu {
     ArrayList<Paciente> listaPac = new ArrayList();
     ArrayList<Medico> listaMed = new ArrayList();
     Habitaciones[] listaHab = new Habitaciones[10];
+    int totalnumero = 10;
 
     public void crearPersonas() throws IOException {
         System.out.println("Creador de persomas ");
@@ -92,21 +93,21 @@ public class Menu {
     }
 
     public void generico() {
-        int total = 10;
-        for (int i = 0; i < total; i++) {
+        
+        for (int i = 0; i < totalnumero; i++) {
             Empleado emp = new Empleado();
 
             /*  emp.Personas();
           emp.sEmpleado();*/
             listaEmp.add(emp);
         }
-        for (int i = 0; i < total; i++) {
+        for (int i = 0; i < totalnumero; i++) {
             Paciente per = new Paciente("", "", "", 0);
             /*per.Personas();
           per.Paciente();*/
             listaPac.add(per);
         }
-        for (int i = 0; i < total; i++) {
+        for (int i = 0; i < totalnumero; i++) {
             Medico med = new Medico();
             /*per.Personas();
           per.Paciente();*/
@@ -123,7 +124,8 @@ public class Menu {
         if (contadorEmp < 10) {
             Empleado emp = new Empleado();
             emp.creadorEmpleado(contadorEmp);
-            for (int i = 0; i < listaEmp.size(); i++) {// verifica si esta duplicado el documento
+            
+            for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
                 if (listaEmp.get(i).getPersona().getDocumento() == emp.getPersona().getDocumento()) {
                     if (emp.getPersona().getDocumento()!=0) {
                         verificador = 1;
@@ -153,7 +155,7 @@ public class Menu {
         if (contadorPac < 10) {
             Paciente pac = new Paciente("", "", "", 0);
             pac.creadorPaciente();
-            for (int i = 0; i < listaPac.size(); i++) {// verifica si esta duplicado el documento
+            for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
                 if (listaPac.get(i).getDocumento() == pac.getDocumento()) {
                     verificador = 1;
                 }
@@ -176,7 +178,7 @@ public class Menu {
         System.out.println("introduca el numero de cedula del empleado");
         med.getEmpleado().getPersona().setDocumento(sc.nextInt());
         if (contadorPac < 10) {
-            for (int i = 0; i < listaEmp.size(); i++) {// verifica si esta duplicado el documento
+            for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
                 if (listaEmp.get(i).getPersona().getDocumento() == med.getEmpleado().getPersona().getDocumento()) {
                     verificador = 1;
                     med.getEmpleado().getPersona().setNombre(listaEmp.get(i).getPersona().getNombre());
