@@ -46,7 +46,7 @@ public class Empleado {
 
     public void creadorEmpleado(int x) throws IOException {
         try {
-
+            
             Formatter bw = new Formatter("C:/Users/loke/Desktop/Nueva/Empleado" + x + ".txt");
 
             // herencia de personas 
@@ -120,7 +120,7 @@ public class Empleado {
 
             bw.close();
         } catch (Exception e) {
-            System.out.println("Error");
+            System.out.println("Error el archivo no esta creado en el directorio");
         }
 
     }
