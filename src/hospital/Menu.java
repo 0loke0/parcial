@@ -30,6 +30,7 @@ public class Menu {
     ArrayList<Inventario> arrayInventario = new ArrayList();
     ArrayList<Habitaciones> arrayHabitaciones = new ArrayList();
     ArrayList<Citas> arrayCitas = new ArrayList();
+    ArrayList<Personas> listaPer = new ArrayList();
     ArrayList<Empleado> listaEmp = new ArrayList();
     ArrayList<Paciente> listaPac = new ArrayList();
     ArrayList<Medico> listaMed = new ArrayList();
@@ -39,19 +40,20 @@ public class Menu {
     public void crearPersonas() throws IOException {
         System.out.println("Creador de persomas ");
         System.out.println(" ");
-        System.out.println("introdusca el tipo de persona a crear ");
+       
 
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
         this.generico();
 
         while (!salir) {
-
-            System.out.println("Empleado. Opcion 1");
-            System.out.println("Paciente. Opcion 2");
-            System.out.println("Medico. Opcion 3");
-            System.out.println("mostrar Todo. Opcion 4");
-            System.out.println("5. Salir");
+            System.out.println("introdusca el tipo de persona a crear ");
+            System.out.println(" Opcion 1 Personas");
+            System.out.println(" Opcion 2 Empleado.");
+            System.out.println(" Opcion 3 Medico.");
+            System.out.println(" Opcion 4 Paciente.");            
+            System.out.println(" Opcion 5 mostrar Todo.");
+            System.out.println("6. Salir");
 
             try {
 
@@ -61,24 +63,28 @@ public class Menu {
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
-                        this.agregarEmpleado();
+                        this.agregarPersonas();
                         break;
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
-                        this.agregarPaciente();
+                        this.agregarEmpleado();
                         break;
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
                         this.agregarMedico();
-                        break;
+                        break;                        
                     case 4:
-                        System.out.println("Has seleccionado la opcion 3");
+                        System.out.println("Has seleccionado la opcion 4");
+                        this.agregarPaciente();
+                        break;
+                    case 5:
+                        System.out.println("Has seleccionado la opcion 5");
 
                         this.mostrar();
 
                         break;
 
-                    case 5:
+                    case 6:
                         salir = true;
                         break;
                     default:
@@ -93,9 +99,15 @@ public class Menu {
     }
 
     public void generico() {
-        
         for (int i = 0; i < totalnumero; i++) {
-            Empleado emp = new Empleado();
+            Personas per = new Personas("", "", 0, "", 0);
+
+            /*  emp.Personas();
+          emp.sEmpleado();*/
+            listaPer.add(per);
+        }
+        for (int i = 0; i < totalnumero; i++) {
+            Empleado emp = new Empleado(0, 0, 0, "");
 
             /*  emp.Personas();
           emp.sEmpleado();*/
@@ -116,24 +128,51 @@ public class Menu {
 
     }
 
+    int contadorPer = 0;
+    int verificadorPer = 0;
+
+    public void agregarPersonas() { // verifica que no tenga otra persona creada con la misma cedula
+        Personas per = new Personas("", "", 0, "", 0);
+            per.creadorPersonas();
+        if (contadorPer < 10) {
+            
+
+            for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
+                if (listaPer.get(i).getDocumento() == per.getDocumento()) {
+                    if (per.getDocumento() != 0) {
+                        verificadorEmp = 1;
+                    }
+                }
+            }
+        }
+        if (verificadorPer == 0) {// si no encuntre documento dupliado lo crea
+
+                //crea los documentos 
+                listaPer.add(per);
+
+                contadorEmp++;
+            } else {
+                System.out.println("el Documento ya pertenece a otro usuario");
+            }
+    }
     int contadorEmp = 0;
-    int verificador = 0;// verifica si el documento esta repetido
+    int verificadorEmp = 0;// verifica si el documento esta repetido
 
     public void agregarEmpleado() throws IOException {
 
         if (contadorEmp < 10) {
-            Empleado emp = new Empleado();
+            Empleado emp = new Empleado(0, 0, 0, "");
             emp.creadorEmpleado(contadorEmp);
-            
+
             for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
                 if (listaEmp.get(i).getPersona().getDocumento() == emp.getPersona().getDocumento()) {
-                    if (emp.getPersona().getDocumento()!=0) {
-                        verificador = 1;
+                    if (emp.getPersona().getDocumento() != 0) {
+                        verificadorEmp = 1;
                     }
                 }
             }
 
-            if (verificador == 0) {// si no encuntre documento dupliado lo crea
+            if (verificadorEmp == 0) {// si no encuntre documento dupliado lo crea
 
                 //crea los documentos 
                 listaEmp.add(emp);
@@ -143,7 +182,7 @@ public class Menu {
                 System.out.println("el Documento ya pertenece a otro usuario");
             }
 
-            verificador = 0;//restablece el verificador
+            verificadorEmp = 0;//restablece el verificador
 
         }
     }
@@ -156,12 +195,12 @@ public class Menu {
             Paciente pac = new Paciente("", "", "", 0);
             pac.creadorPaciente();
             for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
-                if (listaPac.get(i).getDocumento() == pac.getDocumento()) {
-                    verificador = 1;
+                if (listaPac.get(i).getPersona().getDocumento() == pac.getPersona().getDocumento()) {
+                    verificadorEmp = 1;
                 }
             }
 
-            if (verificador == 0) {
+            if (verificadorEmp == 0) {
                 listaPac.add(pac);
                 contadorPac++;
             } else {
@@ -180,7 +219,7 @@ public class Menu {
         if (contadorPac < 10) {
             for (int i = 0; i < totalnumero; i++) {// verifica si esta duplicado el documento
                 if (listaEmp.get(i).getPersona().getDocumento() == med.getEmpleado().getPersona().getDocumento()) {
-                    verificador = 1;
+                    verificadorEmp = 1;
                     med.getEmpleado().getPersona().setNombre(listaEmp.get(i).getPersona().getNombre());
                     med.getEmpleado().getPersona().setApellidos(listaEmp.get(i).getPersona().getApellidos());
                     med.getEmpleado().getPersona().setEdad(listaEmp.get(i).getPersona().getEdad());
@@ -190,7 +229,7 @@ public class Menu {
                 }
             }
 
-            if (verificador == 1) {
+            if (verificadorEmp == 1) {
                 med.creadorMedico();
                 listaMed.add(med);
                 contadorMed++;
@@ -224,12 +263,12 @@ public class Menu {
         }
 
         //Empleados     
-        File carpeta = new File("C:/Users/loke/Desktop/Nueva/");
+        /*File carpeta = new File("C:/Users/loke/Desktop/Nueva/");
         File[] listado = carpeta.listFiles();
         for (int i = 0; i < listado.length; i++) {
             listaEmp.get(i).muestraContenido(i);
             System.out.println("----------------------------------");
-        }
+        }*/
 
     }
 

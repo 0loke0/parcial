@@ -18,7 +18,7 @@ public class Medico implements Serializable {
     String especialidad;
     String universidad;//egresado
     String jornada;//(Diurno o Nocturno).
-    Empleado empleado = new Empleado();
+    Empleado empleado ;
     Scanner sc = new Scanner(System.in);
 
 

@@ -28,27 +28,36 @@ public class Personas { // personas que laboran
         this.genero = genero;
         this.documento = documento;
     }
+
+
   
-    Personas() {
-        this.nombre="";
-        this.apellidos="";
-        this.edad=0;
-        this.genero="";
-        this.documento=0;
-
     
-    }    
-    public void Personas() {
-        this.nombre="";
-        this.apellidos="";
-        this.edad=0;
-        this.genero="";
-        this.documento=0;
 
-    
-    }
      public void creadorPersonas() {
-       
+            sc.nextLine();
+            System.out.println("nombre");
+            this.nombre = sc.nextLine();
+          
+
+            System.out.println("apellidos");
+            this.apellidos = sc.nextLine();
+          
+
+            System.out.println("Edad");
+            this.edad = sc.nextInt();
+           
+
+            sc.nextLine();
+
+            System.out.println("Genero");
+            this.genero = sc.nextLine();
+            
+
+            System.out.println("Documento");
+            this.documento = sc.nextInt();
+           
+
+            sc.nextLine();
        
 
     }
@@ -118,6 +127,7 @@ public class Personas { // personas que laboran
         this.documento = documento;
     }
 
+  
 
   
 

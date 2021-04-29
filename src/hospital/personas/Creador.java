@@ -18,28 +18,28 @@ import java.util.ArrayList;
  * @author loke
  */
 public class Creador {
-    
-    public void creadorEmpleado (ArrayList<Empleado> empleado){
+
     String nombreFichero = "c:\\Nueva\\juana.pan";
-    
-try {
-FileOutputStream ficheroSalida = new FileOutputStream(nombreFichero);
-ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
+
+    public void creadorEmpleado(String nombre, String apellidos, int edad, String genero, int documento,int antiguedad, int sueldo, int idUsuario, String certificados) {
+
+        try {
+            FileOutputStream ficheroSalida = new FileOutputStream(nombreFichero);
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(ficheroSalida);
 // se escriben dos objetos de la clase Persona
-objetoSalida.writeObject(empleado);
-objetoSalida.writeObject(empleado);//crea el objeto
-objetoSalida.close();
-} catch (FileNotFoundException e) {
-System.out.println("¡El fichero no existe!");
-} catch (IOException e) {
-System.out.println(e.getMessage());
-} catch (Exception e) {
-System.out.println(e.getMessage()); 
-};
+            objetoSalida.writeObject(new Personas("", "", 0, "", 0));
+            objetoSalida.writeObject(new Personas("", "", 0, "", 0));
+            objetoSalida.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("¡El fichero no existe!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        };
     }
-    
-    
-    public void lectorEmpleado () {
+
+    public void lectorEmpleado() {
         String nombreFichero = "c:\\Nueva\\juana.pan";
         try {
             FileInputStream ficheroEntrada = new FileInputStream(nombreFichero);
@@ -60,5 +60,5 @@ System.out.println(e.getMessage());
             System.out.println(e.getMessage());
         };
     }
-    
+
 }
