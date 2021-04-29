@@ -11,7 +11,7 @@ import hospital.personas.Personas;
  *
  * @author loke
  */
-public class Especialidad extends Personas{ // se encarga de añadir las profeciones 
+public class Especialidad { // se encarga de añadir las profeciones 
     //son objetos con su propios Clase 
     String medico;
     String administrativo;
